@@ -20,7 +20,8 @@ public class ManagerTicketTest {
     private FlightOption fifth = new FlightOption(8547, 10610, "VKO", "DLM", 297);
     private FlightOption sixth = new FlightOption(9584, 11000, "SVO", "AYT", 207);
     private FlightOption seventh = new FlightOption(5962, 15000, "VKO", "DLM", 350);
-    private FlightOption eight = new FlightOption(7854, 21020, "SVO", "DLM", 310);
+    private FlightOption eight = new FlightOption(7854, 19020, "DME", "AER", 120);
+    private FlightOption ninght = new FlightOption(9854, 18001, "DME", "AER", 150);
 
 
     @BeforeEach
@@ -34,6 +35,7 @@ public class ManagerTicketTest {
         manager.addTicket(sixth);
         manager.addTicket(seventh);
         manager.addTicket(eight);
+        manager.addTicket(ninght);
     }
 
     @Test
@@ -52,7 +54,16 @@ public class ManagerTicketTest {
         String from = "SVO";
         String to = "AYT";
         FlightOption[] actual = manager.findTicket(from, to);
-        FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth, eight};
+        FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth};
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    public void findTicketSochi() {
+        String from = "DME";
+        String to = "AER";
+        FlightOption[] actual = manager.findTicket(from, to);
+        FlightOption[] expected = new FlightOption[]{ninght, eight};
         assertArrayEquals(actual, expected);
     }
 
