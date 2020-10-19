@@ -36,9 +36,9 @@ public class ManagerTicketTest {
 
    @Test
    public void findTicketDalaman() {
-       String departureAirport = VKO;
-       String arrivalAirport = DLM;
-       FlightOption[] actual = manager.findTicket(departureAirport, arrivalAirport);
+       String from = VKO;
+       String to = DLM;
+       FlightOption[] actual = manager.findTicket (from, to);
        FlightOption[] expected = new FlightOption[] {second, fifth,seventh };
        assertArrayEquals(actual, expected);
    }
