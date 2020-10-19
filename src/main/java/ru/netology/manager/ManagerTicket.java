@@ -14,16 +14,14 @@ public class ManagerTicket {
 
     private FlightOption[] tickets = new FlightOption[0];
 
-    public void addTicket (FlightOption ticket) {
+    public void addTicket(FlightOption ticket) {
         repository.getAll();
     }
-
 
     public FlightOption[] findTicket(String from, String to) {
         FlightOption[] result = new FlightOption[0];
         for (FlightOption ticket : repository.getAll()) {
-            if (ticket.getDepartureAirport() == from);
-            (ticket.getArrivalAirport() == to) {
+            if (ticket.getDepartureFlight().equals(from) && ticket.getArrivalFlight().equals(to)) {
                 FlightOption[] tmp = new FlightOption[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = ticket;

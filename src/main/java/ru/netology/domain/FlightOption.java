@@ -10,11 +10,10 @@ import lombok.NoArgsConstructor;
 public class FlightOption implements Comparable {
     private int id;
     private int price;
-    private String departureAirport;
-    private String arrivalAirport;
+    private String departureFlight;
+    private String arrivalFlight;
     private int travelTime;
 
-    //здесь мы сортируем по цене, сравнивая айди
     @Override
     public int compareTo(Object o) {
         FlightOption ticket = (FlightOption) o;
@@ -23,6 +22,6 @@ public class FlightOption implements Comparable {
 
     public interface Comparable <T>{
         public int compareTo ();
-//метод сортировки
+
     }
 }
