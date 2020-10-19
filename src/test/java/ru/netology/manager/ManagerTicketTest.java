@@ -3,6 +3,7 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.FlightOption;
+import ru.netology.domain.TicketByComparator;
 import ru.netology.repository.TicketRepository;
 
 import java.util.Arrays;
@@ -55,5 +56,14 @@ public class ManagerTicketTest {
         FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth, eight};
         assertArrayEquals(actual, expected);
     }
+    @Test
+    public void findTicketAntalyaByComparator() {
+        String from = "SVO";
+        String to = "AYT";
+        FlightOption[] actual = manager.findAllByComparator(from, to, //что сюда? );
+        FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth, eight};
+        assertArrayEquals(actual, expected);
+    }
+
 
 }
