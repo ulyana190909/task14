@@ -7,6 +7,7 @@ import ru.netology.domain.TicketByComparator;
 import ru.netology.repository.TicketRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -60,7 +61,8 @@ public class ManagerTicketTest {
     public void findTicketAntalyaByComparator() {
         String from = "SVO";
         String to = "AYT";
-        FlightOption[] actual = manager.findAllByComparator(from, to, //что сюда? );
+        Comparator<FlightOption> comparator = Comparator.comparing(FlightOption::getFlightTime);
+        FlightOption[] actual = manager.findAllByComparator(from, to, comparator);
         FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth, eight};
         assertArrayEquals(actual, expected);
     }
