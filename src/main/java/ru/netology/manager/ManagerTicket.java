@@ -16,7 +16,7 @@ public class ManagerTicket {
     private FlightOption[] tickets = new FlightOption[0];
 
     public void addTicket(FlightOption ticket) {
-        repository.getAll();
+        repository.add(ticket);
     }
 
     public FlightOption[] findTicket(String from, String to) {

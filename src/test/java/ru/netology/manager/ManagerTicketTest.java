@@ -54,7 +54,7 @@ public class ManagerTicketTest {
         String from = "SVO";
         String to = "AYT";
         FlightOption[] actual = manager.findTicket(from, to);
-        FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth, eight};
+        FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth};
         assertArrayEquals(actual, expected);
     }
     @Test
@@ -63,9 +63,18 @@ public class ManagerTicketTest {
         String to = "AYT";
         Comparator<FlightOption> comparator = Comparator.comparing(FlightOption::getFlightTime);
         FlightOption[] actual = manager.findAllByComparator(from, to, comparator);
-        FlightOption[] expected = new FlightOption[]{third, first, sixth, fourth, eight};
+        FlightOption[] expected = new FlightOption[]{ sixth, fourth, first, third};
         assertArrayEquals(actual, expected);
     }
-
+    @Test
+    public void findTicketDalamanByComparator() {
+        String from = "VKO";
+        String to = "DLM";
+        Comparator<FlightOption> comparator = Comparator.comparing(FlightOption::getFlightTime);
+        FlightOption[] actual = manager.findAllByComparator(from, to, comparator);
+        FlightOption[] expected = new FlightOption[]{fifth,second, seventh};
+        Arrays.sort(actual);
+        assertArrayEquals(actual, expected);
+    }
 
 }
