@@ -14,15 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class ManagerTicketTest {
     private TicketRepository repository = new TicketRepository();
     private ManagerTicket manager = new ManagerTicket(repository);
+    private TicketByComparator comparator = new TicketByComparator();
+
 
     private FlightOption first = new FlightOption(1254, 10500, "SVO", "AYT", 260);
-    private FlightOption second = new FlightOption(1547, 10500, "VKO", "DLM", 350);
+    private FlightOption second = new FlightOption(1547, 10500, "VKO", "DLM", 250);
     private FlightOption third = new FlightOption(1212, 8125, "SVO", "AYT", 270);
     private FlightOption fourth = new FlightOption(5862, 12600, "SVO", "AYT", 259);
     private FlightOption fifth = new FlightOption(8547, 10610, "VKO", "DLM", 297);
     private FlightOption sixth = new FlightOption(9584, 11000, "SVO", "AYT", 207);
-    private FlightOption seventh = new FlightOption(5962, 15000, "VKO", "DLM", 350);
-    private FlightOption eight = new FlightOption(7854, 21020, "SVO", "DLM", 410);
+    private FlightOption seventh = new FlightOption(5962, 15000, "VKO", "DLM", 380);
+    private FlightOption eight = new FlightOption(7854, 21020, "DME", "AER", 410);
     private FlightOption ninght = new FlightOption(9854, 18001, "DME", "AER", 150);
 
 
@@ -82,9 +84,8 @@ public class ManagerTicketTest {
     public void findTicketDalamanByComparator() {
         String from = "VKO";
         String to = "DLM";
-        Comparator<FlightOption> comparator = Comparator.comparing(FlightOption::getFlightTime);
         FlightOption[] actual = manager.findAllByComparator(from, to, comparator);
-        FlightOption[] expected = new FlightOption[]{fifth, second, seventh};
+        FlightOption[] expected = new FlightOption[]{second, fifth, seventh};
         Arrays.sort(actual);
         assertArrayEquals(actual, expected);
     }
@@ -93,7 +94,6 @@ public class ManagerTicketTest {
     public void findTicketSochiByComparator() {
         String from = "DME";
         String to = "AER";
-        Comparator<FlightOption> comparator = Comparator.comparing(FlightOption::getFlightTime);
         FlightOption[] actual = manager.findAllByComparator(from, to, comparator);
         FlightOption[] expected = new FlightOption[]{ninght, eight};
         assertArrayEquals(actual, expected);

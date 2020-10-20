@@ -20,8 +20,8 @@ public class FlightOption implements Comparable {
         return price - ticket.price;
     }
 
-    public interface Comparable <T>{
-        public int compareTo ();
+    public interface Comparable<T> {
+        public int compareTo();
 
     }
 }
