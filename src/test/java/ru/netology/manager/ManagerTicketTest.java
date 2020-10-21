@@ -44,7 +44,6 @@ public class ManagerTicketTest {
         String to = "DLM";
         FlightOption[] actual = manager.findTicket(from, to);
         FlightOption[] expected = new FlightOption[]{second, fifth, seventh};
-        Arrays.sort(actual);
         assertArrayEquals(actual, expected);
     }
 

@@ -27,9 +27,9 @@ public class ManagerTicket {
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = ticket;
                 result = tmp;
-                Arrays.sort(result);
             }
         }
+        Arrays.sort(result);
         return result;
     }
 }
